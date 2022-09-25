@@ -19,6 +19,7 @@ describe('Enforcer plugin test', () => {
     let appRoot;
 
     const App = defineComponent({
+        // @ts-ignore
         inject: {
             authorizer: {
                 // @ts-ignore
