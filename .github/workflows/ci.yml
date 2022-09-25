@@ -1,8 +1,9 @@
-name: main
+name: CI
+
 on: [ push, pull_request ]
 
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -17,6 +18,11 @@ jobs:
       - run: yarn lint
       - run: yarn format
       - run: yarn test
+      - run: yarn coverage
+      - run: yarn build
+
+      - name: Codecov
+        uses: codecov/codecov-action@v1
 
   semantic-release:
     needs: [ test ]
