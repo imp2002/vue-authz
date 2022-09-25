@@ -21,7 +21,6 @@ describe('Enforcer plugin test', () => {
     const App = defineComponent({
         inject: {
             authorizer: {
-                // @ts-ignore
                 from: AUTHORIZER_KEY,
             },
         },
@@ -38,12 +37,10 @@ describe('Enforcer plugin test', () => {
     });
 
     it('Throw Error when authorizer is not provided.', () => {
-        // @ts-ignore
         expect(() => createApp().use(plugin)).toThrowError('Please provide an authorizer instance to plugin.');
     });
 
     it('Throw Error when fake authorizer is provided.', () => {
-        // @ts-ignore
         expect(() => createApp().use(plugin, {})).toThrowError('Please provide an authorizer instance to plugin.');
     });
 
