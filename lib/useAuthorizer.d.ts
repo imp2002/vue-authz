@@ -1,4 +1,4 @@
-import { InjectionKey } from 'vue';
+import { InjectionKey } from 'vue-demi';
 import { Authorizer } from 'casbin.js';
 declare const AUTHORIZER_KEY: InjectionKey<Authorizer>;
 declare const useAuthorizer: <T extends Authorizer = Authorizer>() => T;
