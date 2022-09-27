@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "repository": "https://github.com/casbin-js/vue-authz.git",
+  "repository": "https://github.com/imp2002/vue-authz.git",
   "author": {
     "name": "Zxilly",
     "email": "zhouxinyu1001@gmail.com",
