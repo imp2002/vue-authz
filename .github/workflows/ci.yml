@@ -30,7 +30,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run semantic-release
-        if: github.repository == 'casbin-js/vue-authz' && github.event_name == 'push'
         run: yarn install && yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
