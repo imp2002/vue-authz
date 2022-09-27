@@ -19,7 +19,6 @@ jobs:
       - run: yarn lint
       - run: yarn test
       - run: yarn coverage
-      - run: yarn build
 
       - name: Codecov
         uses: codecov/codecov-action@v1
@@ -30,6 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run semantic-release
+      - run: yarn build
         run: yarn install && yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
