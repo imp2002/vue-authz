@@ -1,6 +1,6 @@
 import { Authorizer } from 'casbin.js';
 import { AUTHORIZER_KEY } from './useAuthorizer';
-import { isVue2 } from 'vue-demi';
+import { isVue3 } from 'vue-demi';
 
 export interface CasbinPluginOptions {
     useGlobalProperties?: boolean;
@@ -20,7 +20,9 @@ const install = function (app, authorizer: Authorizer, options?: CasbinPluginOpt
         'canAny',
     ];
 
-    app.provide(AUTHORIZER_KEY, authorizer);
+    if(isVue3) {
+        app.provide(AUTHORIZER_KEY, authorizer);
+    }
 
     if (!authorizer || !(authorizer instanceof Authorizer)) {
         throw new Error('Please provide an authorizer instance to plugin.');
@@ -45,7 +47,7 @@ const install = function (app, authorizer: Authorizer, options?: CasbinPluginOpt
         // }
 
         if (options.useGlobalProperties) {
-            const vueProperty = isVue2 ? app.prototype : app.config.globalProperties
+            const vueProperty = isVue3 ? app.config.globalProperties : app.prototype
             vueProperty.$authorizer = authorizer;
 
             if (options.customProperties) {
